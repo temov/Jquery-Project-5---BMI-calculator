@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<title>БМИ Калкулатор</title>
+<link rel="stylesheet" href="style.css">
+<script src="jquery-1.11.1.js"></script>
+    <script type="text/javascript">
+        $(function() {
+    
+             $("#btn").click(bmiCalc);
+    
+        });
+          
+          function bmiCalc(){
+            
+                            var h = $("#height").val();
+                            var w = $("#weight").val();
+                            var bmi =(w/(h/100 * h/100));
+                            var bmio = (bmi.toFixed(2));
+                            var rBut = $("input[type=radio][name=radio]:checked").val();
+              
+              if (bmi <= 12 && (rBut == "Male" || rBut == "Female")) {
+                           
+                        $(".result").html("Вашиот  <b>БМИ</b> индекс е" + " " +bmio).animate({fontSize: '1.5em'}, "fast");
+                        $("p.info").text("Внесете точни податоци");
+                        $("#allImg img").show("slow");
+            
+                    }else if(bmi > 12 && bmi < 18.5 && rBut == "Male" ) {
+                        
+                            $(".result").html("Вашиот  <b>БМИ</b> индекс е" + " " +bmio).animate({fontSize: '1.5em'}, "fast");
+                            $("p.info").text("Помала").animate({fontSize: '2em'}, "slow");
+                            $("#text").hide(); 
+                            $("#allImg").show("slow", function(){  
+                            $("#allImg img").attr("src","images/skinny-male.jpg").show("slow");
+                            $("#allImg img").delay(5000).hide("slow", function(){
+                            $("#text").html("<a href='#'>Помала, следете го линкот да ја зголемите тежината на здрав начин</a>").show("slow");
+				  });
+        });          
+                    }else if(bmi > 12 && bmi < 18.5 && rBut == "Female" ) {
+                        
+                            $(".result").html("Вашиот  <b>БМИ</b> индекс е" + " " +bmio).animate({fontSize: '1.5em'}, "fast");
+                            $("p.info").text("Помала").animate({fontSize: '2em'}, "slow");
+                            $("#text").hide(); 
+                            $("#allImg").show("slow", function(){
+                            $("#allImg img").attr("src","images/skinny-female.jpg").show("slow");
+                            $("#allImg img").delay(5000).hide("slow", function(){
+					        $("#text").html("<a href='#'>Помала, следете го линкот да ја зголемите тежината на здрав начин</a>").show("slow");
+				  });
+         });
+                        
+                    }else if(bmi >= 18.5 && bmi < 25 && rBut == "Male") {
+                        
+                         $(".result").html("Вашиот  <b>БМИ</b> индекс е" + " " +bmio).animate({fontSize: '1.5em'}, "fast");
+                            $("p.info").text("Нормална").animate({fontSize: '2em'}, "slow");
+                            $("#text").hide(); 
+                            $("#allImg").show("slow", function(){
+                            $("#allImg img").attr("src","images/normal-male.jpg").show("slow");
+                            $("#allImg img").delay(5000).hide("slow", function(){
+                            $("#text").html("<a href='#'>Нормална, следете го линкот да ја одржите тежината</a>").show("slow");
+				  });
+        });         
+                       
+                    }else if(bmi >= 18.5 && bmi < 25 && rBut == "Female") {
+                        
+                        
+                            $(".result").html("Вашиот  <b>БМИ</b> индекс е" + " " +bmio).animate({fontSize: '1.5em'}, "fast");
+                            $("p.info").text("Нормална").animate({fontSize: '2em'}, "slow");
+                             $("#text").hide(); 
+                            $("#allImg").show("slow", function(){
+                            $("#allImg img").attr("src","images/normal-female.jpg").show("slow");
+                            $("#allImg img").delay(5000).hide("slow", function(){
+                            $("#text").html("<a href='#'>Нормална, следете го линкот да ја одржите тежината</a>").show("slow");
+				  });
+        });      
+                       
+                    }else if(bmi >= 25 && bmi < 30 && rBut == "Male") {
+                        
+                        
+                            $(".result").html("Вашиот  <b>БМИ</b> индекс е" + " " +bmio).animate({fontSize: '1.5em'}, "fast");
+                            $("p.info").text("Прекумерна").animate({fontSize: '2em'}, "slow");
+                            $("#text").hide(); 
+                            $("#allImg").show("slow", function(){
+                            $("#allImg img").attr("src","images/obese-male.jpg").show("slow");
+                            $("#allImg img").delay(5000).hide("slow", function(){
+                            $("#text").html("<a href='#'>Прекумерна, следете го линкот да ја намалите тежината</a>").show("slow");
+				  });
+        });         
+                        
+                    }else if(bmi >= 25 && bmi < 30 && rBut == "Female") {
+                           
+                        
+                            $(".result").html("Вашиот  <b>БМИ</b> индекс е" + " " +bmio).animate({fontSize: '1.5em'}, "fast");
+                            $("p.info").text("Прекумерна").animate({fontSize: '2em'}, "slow");
+                            $("#text").hide(); 
+                            $("#allImg").show("slow", function(){
+                            $("#allImg img").attr("src","images/overweight-female.jpg").show("slow");
+                            $("#allImg img").delay(5000).hide("slow", function(){
+                            $("#text").html("<a href='#'>Прекумерна, следете го линкот да ја намалите тежината</a>").show("slow");
+				  });
+        });         
+                    
+                        
+                    }else if(bmi >30 && rBut == "Male") {
+                           
+                        
+                           $(".result").html("Вашиот  <b>БМИ</b> индекс е" + " " +bmio).animate({fontSize: '1.5em'}, "fast");
+                            $("p.info").text("Преголема").animate({fontSize: '2em'}, "slow");
+                            $("#text").hide(); 
+                            $("#allImg").show("slow", function(){
+                            $("#allImg img").attr("src","images/overweight-male.jpg").show("slow");
+                            $("#allImg img").delay(5000).hide("slow", function(){
+                            $("#text").html("<a href='#'>Преголема, следете го линкот да ја намалите тежината</a>").show("slow");
+				  });
+        });         
+                    }else if(bmi >30 && rBut == "Female") {
+                            
+                            $(".result").html("Вашиот  <b>БМИ</b> индекс е" + " " +bmio).animate({fontSize: '1.5em'}, "fast");
+                            $("p.info").text("Прекумерна").animate({fontSize: '2em'}, "slow");
+                            $("#text").hide(); 
+                            $("#allImg").show("slow", function(){
+                            $("#allImg img").attr("src","images/fat-female.jpg").show("slow");
+                            $("#allImg img").delay(5000).hide("slow", function(){
+                            $("#text").html("<a href='#'>Прекумерна, следете го линкот да ја намалите тежината</a>").show("slow");
+				  });
+        });         
+                
+                    }
+        };
+          
+    </script>
+</head>
+<body>
+	<div class="calculator">
+		<h2> БМИ Калкулатор</h2>
+        <label><input type="radio" name="radio" value="Male">Машки</label>
+        <label><input type="radio" name="radio" value="Female">Женски</label>
+        <p class="text"> Висина</p>
+        <input type="text" id="height">
+        <p class="text"> Тежина</p>
+        <input type="text" id="weight">
+        <p class="result"></p>
+        <button id="btn">Пресметај</button>
+        <p class="info"></p>
+            <div id="allImg">
+                <div id="oFem"><img src="images/fat-female.jpg"></div>
+                <div id="nMal"><img src="images/normal-male.jpg"></div>
+                <div id="oMal"><img src="images/obese-male.jpg"></div>
+                <div id="ovFem"><img src="images/overweight-female.jpg"></div>
+                <div id="ovMal"><img src="images/overweight-male.jpg"></div>
+                <div id="sFem"><img src="images/skinny-female.jpg"></div>
+                <div id="sMal"><img src="images/skinny-male.jpg"></div>
+                <div id="nFem"><img src="images/normal-female.jpg"></div>
+            </div>
+        <div id="text"></div>
+        </div>
+    
+		<div class="footer">&copy;2020 <strong>TT Design</strong></div>
+
+</body>
+</html>
